@@ -1,56 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+// Modules
+import { MainMenu } from './components/menu/mainMenu';
+// Styled Components
+import './Reset.css';
 import './App.css';
+import styled from 'styled-components';
 
-function App() {
+const AppContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  background: #ff0000;
+  display: flex;
+`;
+
+const features = {
+  main: {
+    menu: true,
+    home: true,
+    donations: true,
+    user_manual: true,
+    user:true
+  },
+  sub: {
+    menu: false,
+    list: true,
+    map: true,
+    power: false,
+    export: false,
+    alarms: false
+  }
+}
+
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      <AppContainer>
+        {features.main.menu? <MainMenu features={features} user={'Hello'}/> : null}
+      </AppContainer>      
     </div>
   );
 }
